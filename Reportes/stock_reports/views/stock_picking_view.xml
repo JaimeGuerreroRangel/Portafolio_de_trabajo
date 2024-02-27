@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="stock_picking_form" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='404']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='404']" position="after">
+                    <button name="print_stock_picking" string="Imprimir pdf operaciones de recolección" invisible="state not in ('done')" type="object"/>
+                    <button name="print_stock_delivery" string="Imprimir recibo de entrega" invisible="state not in ('done')" type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

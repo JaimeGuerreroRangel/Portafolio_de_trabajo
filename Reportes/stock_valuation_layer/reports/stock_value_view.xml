@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="report_paperformat" model="report.paperformat">
+            <field name="name">Invoice report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">36</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+         </record>
+
+        <record id="action_sayem_stock_value" model="ir.actions.report">
+            <field name="name">Valoración de existencias</field>
+            <field name="model">stock.valuation.layer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">stock_valuation_layer.report_sayem_stock_valuation</field>
+            <field name="report_file">stock_valuation_layer.report_sayem_stock_valuation</field>
+            <field name="print_report_name">'Valoración de existencias'</field>
+            <field name="binding_model_id" ref="stock_account.model_stock_valuation_layer"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="stock_valuation_layer.report_paperformat"/>
+        </record>
+    </data>
+
+</odoo>

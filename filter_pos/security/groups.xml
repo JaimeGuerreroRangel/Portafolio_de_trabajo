@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record model="res.groups" id="group_pos_30_days_only">
+            <field name="name">Solo mostrar ordenes de los últimos 30 días</field>
+            <field name="comment">Solo mostrar ordenes de los últimos 30 días</field>
+            <field name="category_id" ref="experts_groups.module_category_wallet"/>
+        </record>
+
+    </data>
+
+</odoo>

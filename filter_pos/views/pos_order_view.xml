@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- Modificamos la acción de POS para que muestre los pedidos de POS -->
+        <record id="point_of_sale.action_pos_pos_form" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">pos.order</field>
+            <!-- Modificamos las tres vistas que el usuario puede ver-->
+            <field name="view_mode">tree,form,kanban</field>
+            <!-- Contexto establecido para activar el filtro personalizado de los últimos 30 días en el método search del modelo pos.order -->
+            <!-- 'default_filter_30_days': True hace que el filtro se active automáticamente basado en la lógica definida en el modelo pos.order -->
+            <field name="context">{'default_filter_30_days': True}</field>
+        </record>
+
+        <!-- Modificamos la acción del POS en la vista cambas del tablero-->
+        <record id="point_of_sale.action_pos_order_filtered" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">pos.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'default_filter_30_days': True,
+                'search_default_config_id': [active_id],
+                'default_config_id': active_id
+            }</field>
+        </record>
+
+        <!-- Agregamos el filtro personalizado de los últimos 30 días en la vista de pedidos de POS report -->
+        <record id="report_pos_order_custom" model="ir.ui.view">
+            <field name="name">pos.order.custom</field>
+            <field name="model">report.pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_report_pos_order_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='filter_date']" position="after">
+                    <filter name="30_days" string="30 días" domain="[('date','&gt;=', (context_today() + datetime.timedelta(-30)).strftime('%Y-%m-%d'))]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

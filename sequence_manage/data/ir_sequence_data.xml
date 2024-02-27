@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="quotation_sale_order" model="ir.sequence">
+        <field name="name">Secuencia cotización venta</field>
+        <field name="code">quotation.sale.order</field>
+        <field name="prefix">COT</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="sale_order" model="ir.sequence">
+        <field name="name">Secuencia orden de venta</field>
+        <field name="code">sale.order</field>
+        <field name="prefix">VT</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Compras-->
+    <record id="quotation_purchase_order" model="ir.sequence">
+        <field name="name">Secuencia cotización compra</field>
+        <field name="code">quotation.purchase.order</field>
+        <field name="prefix">COT</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="purchase_order" model="ir.sequence">
+        <field name="name">Secuencia orden de compra</field>
+        <field name="code">purchase.order</field>
+        <field name="prefix">VT</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

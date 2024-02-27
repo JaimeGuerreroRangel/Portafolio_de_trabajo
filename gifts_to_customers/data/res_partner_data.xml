@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Llamo a la función initialize_module del modelo res.partner esto para que si 
+        se actualiza el módulo no se vuelva a ejecutar el código -->
+    <data noupdate="1">
+        <function model="res.partner" name="initialize_module"/>
+    </data>
+
+</odoo>

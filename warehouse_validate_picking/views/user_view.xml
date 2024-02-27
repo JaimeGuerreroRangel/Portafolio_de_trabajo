@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="view_users_form_simple_modif_shop_inh_validate" model="ir.ui.view">
+            <field name="name">view.users.form.simple.modif.shop.inh.validate</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tz']" position="after">
+                    <field name="warehouse_ids_validate" options="{'no_create':True}" widget="many2many_tags" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_users_form_inh_validate" model="ir.ui.view">
+            <field name="name">view.users.form.inherit.validate</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <notebook position="before">
+                        <newline/>
+                        <group string="Validar movimientos de almacenes" invisible="0">
+                            <field name="warehouse_ids_validate" options="{'no_create':True}" widget="many2many_tags"/>
+                        </group>
+                </notebook>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

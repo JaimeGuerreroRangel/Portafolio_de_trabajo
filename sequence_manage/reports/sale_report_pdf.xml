@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="report_saleorder_inh" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[hasclass('page')]//div[@id='informations']" position="replace">
+                <div class="row mt-4 mb-2" id="informations">
+                    <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
+                        <strong>Su referencia:</strong><br/>
+                        <span class="m-0" t-field="doc.client_order_ref">SO0000</span>
+                    </div>
+                    <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
+                        <strong t-if="doc.state in ['draft', 'sent']">Fecha de cotización:</strong>
+                        <strong t-else="">Fecha de la orden:</strong><br/>
+                        <span class="m-0" t-field="doc.date_order" t-options='{"widget": "date"}'>2023-12-31</span>
+                    </div>
+                    <div t-if="doc.validity_date and doc.state in ['draft', 'sent']"
+                        class="col-auto col-3 mw-100 mb-2"
+                        name="expiration_date">
+                        <strong>Expiración:</strong><br/>
+                        <span class="m-0" t-field="doc.validity_date">2023-12-31</span>
+                    </div>
+                    <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
+                        <strong>Vendedor:</strong><br/>
+                        <span class="m-0" t-field="doc.user_id">Mitchell Admin</span>
+                    </div>
+                    <div t-if="doc.quotation_origin and doc.state in ['sale']" class="col-auto col-3 mw-100 mb-2">
+                        <strong>Cotización Origen:</strong><br/>
+                        <span class="m-0" t-field="doc.quotation_origin">Mitchell Admin</span>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+    </data>
+
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="external_layout_header_stock_value">
+            <t t-set="company" t-value="o.company_id"/>
+            <div class="header">
+                <div class="row">
+                    <div class="col-2">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" style="max-height:150px; max-width:150px"/>
+                    </div>
+                    <div class="col-10 text-right mb4">
+                        <h1 t-field="company.name" style="margin:0; font-size:19px;"/>
+                        <t t-if="company.street">
+                            <span t-esc="company.street + ','"/>
+                        </t>
+                        <t t-if="company.street2">
+                            <span t-esc="company.street2"/>
+                        </t>
+                        <br/>
+                        <t t-if="company.zip">
+                            <span t-esc="company.zip + ','"/>
+                        </t>
+                        <t t-if="company.city">
+                            <span t-esc="company.city"/>
+                        </t>
+                        <br/>
+                        <t t-if="company.state_id">
+                            <span t-esc="company.state_id.name + ','"/>
+                        </t>
+                        <span t-field="company.country_id.name"/>
+                        <br/>
+                        <span t-field="company.vat" style="display:block; font-size:14px;"/>
+                        <span t-field="company.phone" style="display:block; font-size:14px;"/>
+                    </div>
+                </div>
+            </div>
+
+            <div t-attf-class="article o_report_layout_striped o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' }});" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <div class="pt-5">
+                    <t t-call="web.address_layout"/>
+                </div>
+                <t t-out="0"/>
+            </div>
+
+            <div class="footer" style="border-top: 2px solid black; height:100px;">
+                <div class="text-center">
+                    <div t-if="report_type == 'pdf'" class="text-muted" style="border-top: 2px solid black;">
+                        Página:
+                        <span class="page"/>
+                        de
+                        <span class="topage"/>
+                    </div>
+                    <div t-if="report_type == 'pdf' and display_name_in_footer" class="text-muted">
+                        <span t-out="o.name">(document name)</span>
+                    </div>
+                </div>
+            </div> 
+
+        </template>
+
+        <template id="report_sayem_stock_valuation_document">
+            <t t-call="stock_valuation_layer.external_layout_header_stock_value">
+                <h1 class="text-center" style="font-size:25px;">Valoración de existencias</h1>
+                <div class="page">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="font-size:15px; text-align: justify;">Fecha</th>
+                                        <th style="font-size:15px; text-align: justify;">Referencia</th>
+                                        <th style="font-size:15px; text-align: justify;">Producto</th>
+                                        <th style="font-size:15px; text-align: justify;">Empresa</th>
+                                        <th style="font-size:15px; text-align: justify;">Cantidad movida</th>
+                                        <th style="font-size:15px; text-align: justify;">Valor unitario</th>
+                                        <th style="font-size:15px; text-align: justify;">Unidad de medida</th>
+                                        <th style="font-size:15px; text-align: justify;">Valor total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="o">
+                                        <tr>
+                                            <td><span t-field="o.create_date" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.reference" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.product_id" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.company_id" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.quantity" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.unit_cost" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.uom_id" style="font-size:17px; text-align: justify;"/></td>
+                                            <td><span t-field="o.value" style="font-size:17px; text-align: justify;"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_sayem_stock_valuation">
+            <t t-call="web.html_container">
+                <t t-call="stock_valuation_layer.report_sayem_stock_valuation_document"/>
+            </t>
+        </template>
+
+    </data>
+
+</odoo>
