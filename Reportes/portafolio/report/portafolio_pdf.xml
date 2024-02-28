@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_layout_portafolio">
+        <t t-set="o" t-value="o.with_context(lang=doc.partner_id.lang)"/>
+            <div class="header" style="border-bottom: 1px solid black;">
+                <div class="row">
+                    <div class="col-2 pt-3">
+                        <img class="img" src="/portafolio/static/src/img/Foto_perfil.jpg" alt="Logo" style="max-height:150px; max-width:150px; padding-left: 20px;"/>
+                    </div>
+                    <div class="col-10 text-right mb4">
+                        <div name="presetation" class="float-right mb5">
+                            <h3>Jaime Guerrero Rangel</h3>
+                            
+                            <p style="border-bottom: 1px solid black;"><strong>Programador Junior</strong></p>
+                            
+                            <p style="text-align: justify; font-size: 12px; color: #3059a2; padding-bottom: 10px;">
+                                <b>
+                                Me presento como especialista en desarrollo Odoo, 
+                                con un año de experiencia adquirida, esta oportunidad la obtuve través del programa 
+                                "Jóvenes Construyendo el Futuro" y "Exdoo" que me brindo la oportunidad. 
+                                En este programa, tuve la oportunidad de especializarme en Python, HTML, CSS, XML, GIT y PostgreSQL. 
+                                Durante este tiempo, desarrollé módulos personalizados y reportes dentro del ecosistema Odoo, 
+                                aplicando prácticas de desarrollo ágil para superar expectativas y entregar soluciones de alta 
+                                calidad que impulsan el éxito empresarial. 
+                                Esta experiencia no solo afianzó mi pasión por la tecnología y la innovación, 
+                                sino que también me motivó a contribuir al crecimiento de proyectos 
+                                a través de soluciones tecnológicas avanzadas.
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div t-attf-class="article o_report_layout_striped o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' }});" t-att-data-oe-model="doc and doc._name" t-att-data-oe-id="doc and doc.id" t-att-data-oe-lang="doc and doc.env.context.get('lang')">
+                <div class="pt-5">
+                    <t t-call="web.address_layout"/>
+                </div>
+                <t t-out="0"/>
+            </div>
+        
+            <div class="footer">
+                <div class="text-center">
+                    <div t-if="report_type == 'pdf'" class="text-muted" style="border-top: 2px solid black;">
+                        <p>Este reporte fue generado en Odoo versión 17 por Jaime Guerrero Rangel</p>
+                    </div>
+                </div>
+            </div> 
+    </template>
+
+    <template id="report_document">
+        <t t-call="portafolio.external_layout_portafolio">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9" style="color: #309bf0; font-size: 18px;">
+                        <div class="text-left">
+                            <i class="fa fa-envelope"></i> <span> jaimeguer1998@hotmail.com</span>
+                        </div>
+                        <div class="text-left">
+                            <i class="fa fa-phone"></i> <span> +52 771-627-7623</span>
+                        </div>
+                        <div class="text-left">
+                            <i class="fa fa-map-marker"></i> <span> Pachuca, Hidalgo, México</span>
+                        </div>
+                    </div>
+                    <div class="col-3" style="color: #309bf0; font-size: 18px;">
+                        <div class="text-right">
+                            <i class="fa-brands fa-linkedin" ></i> <span>  <a href="https://www.linkedin.com/in/jaime-guer" target="_blank">  Linkedin</a></span>
+                        </div>
+                        <div class="text-right">
+                            <i class="fa-brands fa-github"></i> <span> <a href="https://github.com/JaimeGuerreroRangel" target="_blank">  Github</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-3"/>
+            <div class="page">
+                
+                <div id="experiencia" class="container-fluid">
+                    <div class="row">
+                        <div class="col-9">
+                            <div id="left-content" style="width: 90%;">
+                                <h1><b>Experiencia laboral</b></h1> 
+                                <p><b>Becario / Programador Junior</b></p>
+                                <p> <a href="https://exdoo.mx/" target="_blank"> Empresa: Exdoo TI</a></p>
+                                <p><b>Periodo: 06 de marzo de 2023 a  06 de marzo de 2024</b></p>
+                                <p style="text-align: justify; font-size: 14px;"> 
+                                    Durante mi primer periodo (Marzo-Abril 2023), recibí capacitación intensiva en Python 
+                                    y en el uso de la herramienta Odoo, enfocándome en desarrollar mis habilidades de lógica de 
+                                    programación.
+                                </p>
+                                <p style="text-align: justify; font-size: 14px;"> 
+                                    A continuación, (Mayo-Junio 2023), me especialicé en el desarrollo de módulos personalizados, 
+                                    reportes y vistas personalizadas, bajo la supervisión y asignación de tareas por parte 
+                                    de un desarrollador senior.
+                                </p>
+                                <p style="text-align: justify; font-size: 14px;"> 
+                                    Desde Julio 2023 en adelante, asumí responsabilidades crecientes en la creación de módulos 
+                                    personalizados, reportes y vistas personalizadas para diversas versiones de Odoo, 
+                                    culminando en la realización exitosa de <b>156 tareas</b> asignadas. Mis contribuciones se distribuyen 
+                                    a lo largo de versiones desde Odoo 10 hasta Odoo 17, destacándome en:
+                                    <b>
+                                    <li>Odoo10: 26 tareas</li>
+                                    <li>Odoo12: 23 tareas</li>
+                                    <li>Odoo14: 10 tareas</li>
+                                    <li>Odoo15: 20 tareas</li>
+                                    <li>Odoo16: 52 tareas</li>
+                                    <li>Odoo17: 25 tareas</li>
+                                    </b>
+                                </p>                                 
+                                <p style="text-align: justify; font-size: 14px;"> 
+                                    Este trabajo no solo reforzó mis competencias técnicas, sino que también me permitió contribuir 
+                                    significativamente a la mejora y eficiencia de los procesos empresariales, 
+                                    adaptándome a las necesidades cambiantes de los proyectos y demostrando una notable 
+                                    capacidad para aprender y evolucionar en un entorno tecnológico dinámico.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-3">
+                            <span style="font-size: 30px;">Portafolio</span>
+                            <div id="right-content" style="margin-top: 35px;">
+                                <img t-att-src="'/report/barcode/QR/%s?width=%s&amp;height=%s' % ('https://github.com/JaimeGuerreroRangel/Portafolio_de_trabajo', 150, 150)"/>
+                            </div>
+                            <div id="school" style="margin-top: 50px;">
+                                <h2><b>Formación académica</b></h2>
+                                <p>Instituto Tecnológico de Pachuca</p>
+                                <p>Periodo: 2018 - 2022</p>
+                                <p>Carrera: Ingeniería química</p>
+                                <p>Grado: Egresado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-3"/>
+                <div id="other_dates">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3 style="color: #2b81b9">Certificaciones</h3>
+                            <span> <a href="https://app.aluracursos.com/certificate/de65a4e6-fd4e-45bb-b4cb-7221375bc75a" target="_blank">  Lógica de programación: Conceptos primordiales</a></span>
+                            <br/>
+                            <span> <a href="https://app.aluracursos.com/certificate/bd1f7dbc-8d17-4dae-a256-53cc9b1a05c1" target="_blank">  Git y GitHub: controle y comparta su código</a></span>
+                            <br/>
+                            <span>  <a href="https://app.aluracursos.com/program/certificate/06d069de-0d46-43ee-9a0f-10fa8f3b418f" target="_blank">  Oracle Next Education F2 T5 Back-end</a></span>
+                        </div>
+                        <div class="col-3" style="color: #2b81b9">
+                            <h3>Idiomas</h3>
+                            <p>Español</p>
+                            <p>Inglés (Nivel A2)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <template id="report_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="portafolio.report_document" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
