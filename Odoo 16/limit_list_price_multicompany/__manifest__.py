@@ -5,7 +5,7 @@
     'author': 'Jaime Guerrero Rangel',
     'license': 'GPL-3', 
     'category': 'product',
-    "version": "0.1",
+    "version": "16.1",
     "description" : """
         * Este módulo limita las listas de precios por compañía.
     """,

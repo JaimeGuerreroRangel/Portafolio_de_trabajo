@@ -2,7 +2,7 @@
 
 {
     "name": "Reporte de valoración de existencias",
-    "version": "0.1",
+    "version": "14.1",
     "author": "Jaime Guerrero Rangel",
     "category": "Stock/Report",
     "license": "AGPL-3",

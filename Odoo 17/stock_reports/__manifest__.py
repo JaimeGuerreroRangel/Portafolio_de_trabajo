@@ -2,7 +2,7 @@
 
 {
     "name": "Personalización de reportes de Inventario",
-    "version": "0.1",
+    "version": "17.1",
     "author": "Jaime Guerrero Rangel",
     "category": "Stock/Reports",
     "description": """

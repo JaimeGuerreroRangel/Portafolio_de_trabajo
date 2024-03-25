@@ -2,7 +2,7 @@
 
 {
     'name' : 'Filtro de pedidos de PdV',
-    'version' : '0.1',
+    'version' : '14.1',
     'author' : 'Jaime Guerrero Rangel',
     'license': 'GPL-3',
     'category' : 'Point of Sale',

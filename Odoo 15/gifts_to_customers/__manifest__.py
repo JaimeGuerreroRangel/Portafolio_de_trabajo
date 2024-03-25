@@ -2,7 +2,7 @@
 
 {
     "name": "Regalos a Clientes",
-    "version": "0.1",
+    "version": "15.1",
     "author": "Jaime Guerrero Rangel",
     "category": "Partner",
     "license" : "AGPL-3",

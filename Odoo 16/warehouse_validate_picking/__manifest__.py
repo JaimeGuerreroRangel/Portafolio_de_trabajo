@@ -2,7 +2,7 @@
 
 {
     "name": "Validaciones de almacén por usuario",
-    "version": "0.1",
+    "version": "16.1",
     "author" : "Jaime Guerrero Rangel",
     "category" : 'Stock',
     "license" : "AGPL-3",

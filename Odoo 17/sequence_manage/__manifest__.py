@@ -2,7 +2,7 @@
 
 {
     "name": "Sequencias independientes",
-    "version": "0.1",
+    "version": "17.1",
     "depends": ["base","sale_stock", "purchase_stock"],
     "author": "Jaime Guerrero Rangel",
     "category": "Other Modules",

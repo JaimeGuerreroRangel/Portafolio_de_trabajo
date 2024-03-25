@@ -3,7 +3,7 @@
 
 {
     "name": "Portafolio",
-    "version": "0.1",
+    "version": "17.1",
     "author": "Jaime Guerrero Rangel (jaimeguer1998@hotmail.com)",
     "category": "Other",
     "description": """

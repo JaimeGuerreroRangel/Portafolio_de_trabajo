@@ -2,7 +2,7 @@
 
 {
     'name': 'Agregar cambios a clienten en apartado social',
-    'version': '0.1',
+    'version': '10.1',
     'author': 'Jaime Guerrero Rangel',
     'category': 'Customer',
     'description': """
