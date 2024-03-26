@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record model="ir.ui.view" id="sales_in_payment_form_view_inh">
+            <field name="name">sales_in_payment_form_view_inh</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group//group[last()]//field[last()]" position="after">
+                    <field name="sale_order_domain" invisible="1"/>
+                    <field name="sale_ids_advance_payment" widget="many2many_tags" options="{'no_quick_create': True,'no_create_edit' : True, 'no_create': True}" attrs="{'invisible':[('payment_customer_advanced','=',False),('sign_33','=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_search_view_inh">
+            <field name="name">account_payment_search_view_inh</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='currency']" position="after">
+                    <separator/>
+                    <filter string="Ventas con anticipos" name="sale_ids_advance_payment" domain="[('sale_ids_advance_payment','!=',False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

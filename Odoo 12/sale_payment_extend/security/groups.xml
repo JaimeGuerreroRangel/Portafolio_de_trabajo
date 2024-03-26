@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record model="res.groups" id="admin_advance_payment">
+            <field name="name">Confirmar anticipo sin ventas relacionadas</field>
+            <field name="comment">Permite confirmar anticipos sin que dependa de tener que poner una venta</field>
+            <field name="category_id" ref="experts_groups.module_category_experts_account"/>
+        </record>
+    </data>
+
+</odoo>

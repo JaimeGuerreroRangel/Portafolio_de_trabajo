@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="view_res_config_settings_inherit_delca_account" model="ir.ui.view">
+            <field name="name">res.config.settings.inherit.delca.account</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='invoicing_settings']" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box" id="advance_payment_sale">
+                        <div class="o_setting_left_pane">
+                            <field name="advance_payment_sale_limitation"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="advance_payment_sale_limitation" class="o_form_label" string="Relación de anticipos limitada por ventas"/>
+                            <div class="text-muted">
+                                <p>Al marcar esta opción, el tipo de relación solo podrá seleccionar los anticipos que la venta tenga disponibles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>
