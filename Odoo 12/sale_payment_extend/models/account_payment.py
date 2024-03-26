@@ -40,7 +40,7 @@ class AccountPayment(models.Model):
     @api.multi            
     def post(self):
         for rec in self:
-            if rec.payment_customer_advanced and not self.env.user.has_group('delca_sale_cash_payment_term_extend.admin_advance_payment'):
+            if rec.payment_customer_advanced and not self.env.user.has_group('sale_cash_payment_term_extend.admin_advance_payment'):
                 if not rec.sale_ids_advance_payment:
                     raise UserError("Cuando el pago de anticipo está activado, se requiere al menos una venta relacionada.")
         res = super(AccountPayment, self).post()
