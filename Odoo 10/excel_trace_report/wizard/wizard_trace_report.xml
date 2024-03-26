@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data>
+
+        <record id="view_excel_export_wizard" model="ir.ui.view">
+            <field name="name">excel.export.wizard.form</field>
+            <field name="model">excel.export.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Excel Trazabilidad">
+                    <group col="2">
+                        <group>
+                            <field name="product_id" options="{'no_quick_create': True,'no_create_edit' : True,'no_create': True,'no_open':True,'no_quick_open':True}" required="1"/>
+                        </group>
+                        <group>
+                            <field name="location_id" options="{'no_quick_create': True,'no_create_edit' : True,'no_create': True,'no_open':True,'no_quick_open':True}" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                        </group>
+                        <group>
+                            <field name="end_date" required="1"/>
+                        </group>
+                    </group>
+                    <group name="Reporte" attrs="{'invisible':[('data_file','=', False)]}">
+                        <field name="data_file" filename="file_name" readonly="1"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button name="generate_excel_report" string="Generar Reporte" type="object" class="btn-primary"/>
+                        <button string="Salir" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_excel_export_wizard" model="ir.actions.act_window">
+            <field name="name">Análisis de Trazabilidad</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">excel.export.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_excel_export_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            id="report_menu"
+            name="Reportes"
+            parent="purchase.menu_purchase_root"
+            sequence="51"/>
+
+        <menuitem id="menu_excel_export_wizard" 
+                name="Análisis de trazabilidad" 
+                parent="report_menu" 
+                sequence="0" 
+                action="action_excel_export_wizard"/>
+    </data>    
+
+
+</openerp>
